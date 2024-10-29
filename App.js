@@ -6,12 +6,12 @@ import { Button, TextInput } from 'react-native-paper';
 export default function App() {
   const [descricao, setDescricao] = useState('');
   const [valor, setValor] = useState(0);
+  const [cadastrando, setCadastrando] = useState(false);
 
-  const handleCadastrar = () => {
-    console.log(descricao);
-    console.log(valor);
+  const handleCadastrar = async () => {
+    setCadastrando(true);
 
-    fetch('https://668d6800099db4c579f2dcc2.mockapi.io/roupas', {
+    await fetch('https://668d6800099db4c579f2dcc2.mockapi.io/roupas', {
       method: 'POST',
       headers: {
          Accept: 'application/json',
@@ -21,7 +21,9 @@ export default function App() {
         valor: valor,
         descricao: descricao,
       }),
-    });    
+    });
+
+    setCadastrando(false);
   }
   
   // const [senhaProtegida, setSenhaProtegida] = useState(true);
@@ -38,7 +40,7 @@ export default function App() {
       <TextInput keyboardType='email-address' style={styles.entradaTexto} activeUnderlineColor='red' label='Nome Completo'/> */}
       <TextInput label="Descrição" defaultValue={descricao} onChangeText={setDescricao}/>
       <TextInput label="Valor" defaultValue={valor} onChangeText={setValor}/>
-      <Button mode='contained' onPress={handleCadastrar}>Cadastrar</Button>
+      <Button mode='contained' onPress={handleCadastrar} loading={cadastrando} >Cadastrar</Button>
       
       <StatusBar style="auto" />
     </View>
