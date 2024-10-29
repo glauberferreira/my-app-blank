@@ -34,8 +34,8 @@ export default function App() {
   
   return (
     <View style={styles.container}>
-      {/* <Image source={require('./assets/icon.png')} style={styles.logotipo}/>
-      <Text style={styles.texto}>Open up App.js to start working on your app!</Text>
+      <Image source={require('./../assets/icon.png')} style={styles.logotipo}/>
+      {/* <Text style={styles.texto}>Open up App.js to start working on your app!</Text>
       <TextInput secureTextEntry={senhaProtegida} right={<TextInput.Icon icon="eye" onPress={() => inverter()} />}/>
       <TextInput keyboardType='email-address' style={styles.entradaTexto} activeUnderlineColor='red' label='Nome Completo'/> */}
       <TextInput label="Descrição" defaultValue={descricao} onChangeText={setDescricao}/>
