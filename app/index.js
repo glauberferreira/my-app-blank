@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'expo-router'
 import { Button, List } from 'react-native-paper'
 
@@ -10,20 +10,23 @@ const Roupa = ({ descricao, valor }) => {
 }
 
 const Index = () => {
-  const roupas = [
-    {
-      descricao: "Roupa 1",
-      valor: 50
-    },
-    {
-      descricao: "Roupa 2",
-      valor: 80
-    },
-    {
-      descricao: "Roupa 3",
-      valor: 100
-    }
-  ];
+  const [roupas, setRoupas] = useState([]);
+
+  const getRoupas = async () => {
+    console.log('getRoupas');
+
+    // setCadastrando(true);
+
+    const response = await fetch('https://668d6800099db4c579f2dcc2.mockapi.io/roupas');
+    const json = await response.json(); 
+    setRoupas(json);
+
+    // setCadastrando(false);
+  }
+
+  useEffect(() => {
+    getRoupas();
+  }, []);
 
   return (
     <View>
