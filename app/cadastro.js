@@ -1,3 +1,4 @@
+import { router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
@@ -24,6 +25,8 @@ export default function App() {
     });
 
     setCadastrando(false);
+
+    router.replace('/');
   }
   
   // const [senhaProtegida, setSenhaProtegida] = useState(true);

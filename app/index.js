@@ -18,7 +18,7 @@ const Index = () => {
     // setCadastrando(true);
 
     const response = await fetch('https://668d6800099db4c579f2dcc2.mockapi.io/roupas');
-    const json = await response.json(); 
+    const json = await response.json();
     setRoupas(json);
 
     // setCadastrando(false);
@@ -30,13 +30,13 @@ const Index = () => {
 
   return (
     <View>
-      <FlatList data={roupas} renderItem={({ item }) => <Roupa descricao={item.descricao} valor={item.valor} />} />
-
       <Link href='/cadastro'>Nova Roupa</Link>
 
       <Link href='/cadastro' asChild>
         <Button mode='contained'>Nova Roupa</Button>
       </Link>
+
+      <FlatList data={roupas} renderItem={({ item }) => <Roupa descricao={item.descricao} valor={item.valor} />} />
     </View>
   )
 }
