@@ -1,11 +1,14 @@
 import { FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'expo-router'
-import { Button, List } from 'react-native-paper'
+import { Button, IconButton, List } from 'react-native-paper'
 
-const Roupa = ({ descricao, valor }) => {
+const Roupa = ({ id, descricao, valor }) => {
   return (
-    <List.Item title={descricao} description={valor} />
+    <List.Item  title={descricao}
+                description={valor}
+                right={() => <IconButton icon="trash-can-outline" onPress={() => console.log(id)} />}
+    />
   );
 }
 
@@ -36,7 +39,7 @@ const Index = () => {
         <Button mode='contained'>Nova Roupa</Button>
       </Link>
 
-      <FlatList data={roupas} renderItem={({ item }) => <Roupa descricao={item.descricao} valor={item.valor} />} />
+      <FlatList data={roupas} renderItem={({ item }) => <Roupa id={item.id} descricao={item.descricao} valor={item.valor} />} />
     </View>
   )
 }
