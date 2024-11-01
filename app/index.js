@@ -4,10 +4,23 @@ import { Link } from 'expo-router'
 import { Button, IconButton, List } from 'react-native-paper'
 
 const Roupa = ({ id, descricao, valor }) => {
+  
+  const handleExcluir = async (id) => {
+    console.log(id);
+
+    // setCadastrando(true);
+
+    await fetch(`https://668d6800099db4c579f2dcc2.mockapi.io/roupas/${id}`, {
+      method: 'DELETE',
+    });
+
+    // setCadastrando(false);
+  }
+
   return (
     <List.Item  title={descricao}
                 description={valor}
-                right={() => <IconButton icon="trash-can-outline" onPress={() => console.log(id)} />}
+                right={() => <IconButton icon="trash-can-outline" onPress={() => handleExcluir(id)} />}
     />
   );
 }
